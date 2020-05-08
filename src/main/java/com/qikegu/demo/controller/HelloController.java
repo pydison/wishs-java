@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
-import com.qikegu.demo.domain.Wish;
+import com.qikegu.demo.domain.Miao;
 
 
 @RestController
@@ -33,10 +33,10 @@ public class HelloController {
     }
 
     @RequestMapping(value="/showuser/{id}", method=RequestMethod.GET)
-    public Wish showuser(@PathVariable String id) {
+    public Miao showuser(@PathVariable String id) {
         String sql = "SELECT id,logtitle,logname,logip FROM loginfo WHERE id = ?";
-        RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
-        Wish user = jdbcTemplate.queryForObject(sql, rowMapper, id);
+        RowMapper<Miao> rowMapper = new BeanPropertyRowMapper<>(Miao.class);
+        Miao user = jdbcTemplate.queryForObject(sql, rowMapper, id);
         return user;
     }
 

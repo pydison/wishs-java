@@ -1,6 +1,6 @@
 package com.qikegu.demo.domain;
 
-public class Wish {
+public class Miao {
 
     private int uid;
     private String wishtype;
@@ -20,7 +20,6 @@ public class Wish {
     }
     public int getChangenum(){return changenum;}
     public String getSql(){return sql;}
-
 
 
     public void setUid(int uid){

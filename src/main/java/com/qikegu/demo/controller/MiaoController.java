@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import com.qikegu.demo.domain.Wish;
+import com.qikegu.demo.domain.Miao;
 
 
 @RestController
@@ -16,12 +16,12 @@ public class MiaoController {
     JdbcTemplate jdbcTemplate;
 
     @RequestMapping(value="/insert", method=RequestMethod.POST)
-    public boolean insert(@RequestBody Wish wish) {
-        String content = wish.getContent();
+    public boolean insert(@RequestBody Miao miao) {
+        String content = miao.getContent();
         String sql1 = "INSERT INTO logs (moment, content) VALUES (now(), ?);";
-        int uid = wish.getUid();
-        String wishtype = wish.getWishtype();
-        int changenum = wish.getChangenum();
+        int uid = miao.getUid();
+        String wishtype = miao.getWishtype();
+        int changenum = miao.getChangenum();
         String sql2 = String.format("UPDATE wishs set %s = %s + ? WHERE uid = ?;",wishtype,wishtype);
 
         return jdbcTemplate.update(sql1,content) > 0 & jdbcTemplate.update(sql2,changenum,uid) > 0;
